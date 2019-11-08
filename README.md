@@ -274,6 +274,19 @@ python generate_tfrecord.py --csv_input=images\test_labels.csv --image_dir=image
 ```
 These generate a train.record and a test.record file in \object_detection. These will be used to train the new object detection classifier.
 
+In case you are using TensorFlow v2 and you get an error saying:
+
+> AttributeError: module 'tensorflow' has no attribute 'app'.
+
+edit **generate_tfrecord.py** file and change:
+
+`import tensorflow as tf`
+
+with:
+
+`import tensorflow.compat.v1 as tf`
+
+
 ### 5. Create Label Map and Configure Training
 The last thing to do before training is to create a label map and edit the training configuration file.
 
